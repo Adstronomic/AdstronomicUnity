@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject myCamera;
-    public Adstronomic myAdstronomic;
+    private Adstronomic myAdstronomic;
 
     private Rigidbody myRigidbody;
 
@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision myCollision) {
-        if(myCollision.transform.tag == "Banner Tag") StartCoroutine(myAdstronomic.loadBanner());
-        else if(myCollision.transform.tag == "Interstitial Tag") StartCoroutine(myAdstronomic.loadInterstitial(this.myCamera));
-        else if(myCollision.transform.tag == "Rewarded Tag") StartCoroutine(myAdstronomic.loadRewarded(this.myCamera));
+        if(myCollision.transform.tag == "Banner Tag") StartCoroutine(this.myAdstronomic.loadBanner());
+        else if(myCollision.transform.tag == "Interstitial Tag") StartCoroutine(this.myAdstronomic.loadInterstitial(this.myCamera));
+        else if(myCollision.transform.tag == "Rewarded Tag") StartCoroutine(this.myAdstronomic.loadRewarded(this.myCamera));
     }
 }
