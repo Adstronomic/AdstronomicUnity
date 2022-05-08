@@ -30,13 +30,13 @@ En tant que développeur Unity, vous êtes sûrement famillier avec Unity Hub, l
 
 Cliquez sur "New Project", sélectionnez 3D, et indiquez le nom et l'emplacement de votre nouveau projet. Les autres réglages n'ayant pas d'importance, vous devriez ensuite arriver sur la scène principale de votre nouveau projet.
 
-Comme vous partez d'un projet vide, vous allez devoir ajouter manuellement le SDK Adstronomic. Pour cela, copiez le fichier Assets > Scripts > Adstronomic.cs de ce projet vers votre nouveau projet, et collez-le.
+![Adstronomic Unity 1](https://raw.githubusercontent.com/Adstronomic/AdstronomicUnity/master/Read%20Me/1.png)
 
-Je vous recommande fortement d'avoir un dossier Scripts séparés, ou vous metterez les différents scripts de votre projet, mais ce n'est pas une obligation pour qu'Adstronomic fonctionne.
+Comme vous partez d'un projet vide, vous allez devoir ajouter le SDK Adstronomic. Pour cela, commençez [par le télécharger.](https://drive.google.com/file/d/1uyfIK3e0OYvjfuqj-E7394Ws18ULzLzW/view?usp=sharing)  Ensuite, assurez vous d'être dans l'onglet Project de votre projet, et faîtes un clic droit, puis sélectionnez Import Package > Custom Package, et indiquez le fichier que vous venez de télécharger.
 
+![Adstronomic Unity 1](https://raw.githubusercontent.com/Adstronomic/AdstronomicUnity/master/Read%20Me/2.png)
 
-
-Notez que vous devez pour l'instant copier ce fichier manuellement vers votre projet, mais que la prochaine version d'Adstronomic vous permettra de le récupérer directement via le gestionnaire de packages d'Unity.
+Notez que par défaut le SDK d'Adstronomic va s'installer dans un dossier Scripts, mais vous pouvez le déplacer si besoin.
 
 Félicitations ! Vous venez d'ajouter Adstronomic à votre projet ! 🥳 La prochaine étape est maintenant de le configurer !
 
@@ -48,20 +48,25 @@ Félicitations ! Vous venez d'ajouter Adstronomic à votre projet ! 🥳 La proc
 
 Maintenant qu'Adstronomic est intégré à votre projet, nous allons voir comment le paramétrer pour qu'il récupère et envoie les bonnes données.
 
-Tout projet Unity fonctionne via des scripts, et vous en aurez forcément un qui va contrôler le déroulement de votre jeu. Nous allons avoir besoin d'éditer ce script.
+Tout projet Unity fonctionne via des scripts, et vous en aurez forcément un qui va contrôler le déroulement de votre jeu. Si vous n'en avez pas, vous pouvez en créer un, et l'attacher à un objet de votre scène. Dans mon cas, je vais créer un script GameController, que je vais attacher à ma MainCamera, et ajoutez lui également le script Adstronomic.
 
-Si vous n'en avez pas, vous pouvez en créer un, et l'attacher à un objet de votre scène. Dans mon cas, je vais créer un script GameController, que je vais attacher à ma "Main Camera".
+![Adstronomic Unity 1](https://raw.githubusercontent.com/Adstronomic/AdstronomicUnity/master/Read%20Me/3.png)
 
-
-
-Ouvrez ensuite ce script.
-Pour utiliser Adstronomic, nous allons commencer par ajouter un attribut de type Adstronomic, via la ligne suivante :
+Ouvrez ensuite le script GameController. Pour utiliser Adstronomic, nous allons commencer par ajouter un attribut de type Adstronomic, via la ligne suivante :
 
 ```cpp
 private Adstronomic myAdstronomic;
 ```
 
-Pour initialiser Adstronomic, nous allons ensuite utiliser la fonction initialize. Je vous recommande de l'appeler dans la fonction Start de votre script, afin qu'Adstronomic soit initialisé au chargement de cet objet.
+Ensuite, nous devons récupérer le SDK Adstronomic, et l'injecter dans cet attribut. Comme il est attaché au même GameObject que ce script, nous pouvons le récupérer dans la fonction Start, comme ceci :
+
+```cpp
+this.myAdstronomic = this.gameObject.GetComponent<Adstronomic>();
+```
+
+Si votre script Adstronomic est lié à un autre GameObject, vous pouvez le récupérer de la même manière, mais en adaptant l'objet parent.
+
+Pour initialiser Adstronomic, nous allons ensuite utiliser la fonction initialize :
 
 ```cpp
 this.myAdstronomic.initialize("SMSdtSBHg8PAvPq7PmC1");

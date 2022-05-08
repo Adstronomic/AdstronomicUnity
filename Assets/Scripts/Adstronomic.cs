@@ -155,7 +155,7 @@ public class Adstronomic : MonoBehaviour
         this.videoClose.AddComponent<Button>();
         this.videoClose.GetComponent<Button>().onClick.AddListener(() => {
             if(videoDelay == 0.0f) {
-                this.mainScene.SetActive(true);
+                if(this.mainScene) this.mainScene.SetActive(true);
 
                 this.videoBackground.SetActive(false);
                 this.videoClose.SetActive(false);
@@ -185,6 +185,8 @@ public class Adstronomic : MonoBehaviour
         videoCloseText.GetComponent<Text>().fontSize = 20;
         videoCloseText.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         videoCloseText.GetComponent<Text>().color = Color.white;
+
+        Debug.Log("Adstronomic is Ready !");
 
         StartCoroutine(this.fetchBanner());
         StartCoroutine(this.fetchInterstitial());
@@ -250,7 +252,7 @@ public class Adstronomic : MonoBehaviour
         Application.OpenURL(this.bannerAdObject.redirection);
     }
 
-    public IEnumerator loadInterstitial(GameObject myCamera) {
+    public IEnumerator loadInterstitial() {
         if(this.interstitialAdObjectBuffer.advertiserCampaignId != "" && this.videoDelay == 0.0f) {
             this.interstitialAdObject = this.interstitialAdObjectBuffer;
 
@@ -264,7 +266,7 @@ public class Adstronomic : MonoBehaviour
             this.videoClose.gameObject.SetActive(true);
             this.videoDelay = 10.0f;
 
-            this.mainScene.SetActive(false);
+            if(this.mainScene) this.mainScene.SetActive(false);
 
             StartCoroutine(this.fetchInterstitial());
 
@@ -317,7 +319,7 @@ public class Adstronomic : MonoBehaviour
         Application.OpenURL(this.interstitialAdObject.redirection);
     }
 
-    public IEnumerator loadRewarded(GameObject myCamera) {
+    public IEnumerator loadRewarded() {
         if(this.rewardedAdObjectBuffer.advertiserCampaignId != "" && this.videoDelay == 0.0f) {
             this.rewardedAdObject = this.rewardedAdObjectBuffer;
 
@@ -331,7 +333,7 @@ public class Adstronomic : MonoBehaviour
             this.videoClose.gameObject.SetActive(true);
             this.videoDelay = 10.0f;
 
-            this.mainScene.SetActive(false);
+            if(this.mainScene) this.mainScene.SetActive(false);
 
             StartCoroutine(this.fetchRewarded());
 
