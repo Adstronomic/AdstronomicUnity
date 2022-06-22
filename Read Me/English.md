@@ -1,4 +1,4 @@
-## [**🇫🇷 VERSION FRANÇAISE DISPONIBLE 🇫🇷**](https://github.com/Adstronomic/AdstronomicUnity/blob/master/Read%20Me/French.md)
+## [**🇫🇷 VERSION FRANÇAISE DISPONIBLE 🇫🇷**](https://flrn.gitbook.io/adstronomic/adstronomic-unity/adstronomic-guide-dinstallation-unity)
 
 
 
@@ -32,7 +32,7 @@ Click on "New Project", select 3D, and specify the name and location of your new
 
 ![Adstronomic Unity 1](https://raw.githubusercontent.com/Adstronomic/AdstronomicUnity/master/Read%20Me/1.png)
 
-Since you are starting with an empty project, you will need to add the Adstronomic SDK. To do this, start by downloading it (https://drive.google.com/file/d/1uyfIK3e0OYvjfuqj-E7394Ws18ULzLzW/view?usp=sharing). Then, make sure you are in the Project tab of your project, and right click, then select Import Package > Custom Package, and specify the file you just downloaded.
+Since you are starting with an empty project, you will need to add the Adstronomic SDK. To do this, start [by downloading it.](https://drive.google.com/file/d/1uyfIK3e0OYvjfuqj-E7394Ws18ULzLzW/view?usp=sharing) Then, make sure you are in the Project tab of your project, and right click, then select Import Package > Custom Package, and specify the file you just downloaded.
 
 ![Adstronomic Unity 1](https://raw.githubusercontent.com/Adstronomic/AdstronomicUnity/master/Read%20Me/2.png)
 
